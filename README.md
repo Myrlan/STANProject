@@ -1,6 +1,6 @@
 # STANProject
 
-1) Analyser
+## Analyser
 
 B.
 Jeu en 2D de type hack and slash en temp réel.
@@ -12,34 +12,34 @@ Utilisation de Cookies pour faciliter la reconnection de l'utilisateur.
 
 C.
 Affichage de la carte:
-	- Charger toutes les images de jeu
-	- Selectionner les images correspondantes à la scène
-	- Placer les images
+	* Charger toutes les images de jeu
+	* Selectionner les images correspondantes à la scène
+	* Placer les images
 
 Codage des interactions:
-	- Mouvements possibles de l'utilisateur
-	- Mouvements des enemies
-	- Propriétés des objects
-	- Changement de scène
+	* Mouvements possibles de l'utilisateur
+	* Mouvements des enemies
+	* Propriétés des objects
+	* Changement de scène
 
 Animations:
-	- Création des sprites
-	- Changement des sprites en fonctions des actions
+	* Création des sprites
+	* Changement des sprites en fonctions des actions
 
 Interface utilisateur:
-	- Menu de démarage
-	- Menu d'option 
-	- Informations visuelles
-	- Interface de sauvegarde
+	* Menu de démarage
+	* Menu d'option 
+	* Informations visuelles
+	* Interface de sauvegarde
 
 Interaction avec la base de données:
-	- Dépôt des images dans la base de données 
-	- Recuperation des images coté client
-	- Enregistrer les données clients (nom, mot de passe, avancé sur le jeu)
+	* Dépôt des images dans la base de données 
+	* Recuperation des images coté client
+	* Enregistrer les données clients (nom, mot de passe, avancé sur le jeu)
 
 
 
-2) Concevoir
+## Concevoir
 
 Affichage de la carte: on attribut des images à chaque case (tuile) du tableau de la scène.
 
@@ -51,7 +51,7 @@ Propriétés des objets: On associe à chaque objet une ou plusieurs fonctions s
 
 
 
-3) Planifier:
+## Planifier:
 
 Phase 1: Initialization du site web
 
@@ -71,7 +71,7 @@ Phase 8: Système de sauvegarde
 
 
 
-4) Definir un prototype initial:
+## Definir un prototype initial:
 
 Les éléments essentiel sont: une map, un enemie, le personnage, une arme.
 Le test de base est d'avoir le personnage ramase l'arme et tue l'enemie, la carte peur être blanche et l'enemie imobile.
