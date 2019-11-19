@@ -19,5 +19,8 @@ MongoClient.connect(url,
     //     console.log("1 document inserted");
     //     db.close();
     // });
-    
+    var results = dbo.collection("students").find({});
+    results.forEach(row => {
+        console.log(row);
+    });
 });
