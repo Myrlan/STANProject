@@ -3,8 +3,41 @@ const session = require('express-session')
 const game_routes_ref = require('./routes/game_routes.js')
 const bodyParser = require('body-parser') // pour parser les requêtes POST
 
+// Connexion à MongoDB :
+var mongo = require('mongodb')
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/gameDB";
+// Ou avec Mongoose : (ne marche pas)
 // const mongoose = require('mongoose')
 // mongoose.connect('mongodb://localhost/mydb')
+
+MongoClient.connect(url,
+  function(err, db) {
+  if (err) throw err;
+  console.log("Database connected!");
+  var dbo = db.db("gameDB");
+  // Insertion (one et many avec un array json)
+
+  dbo.collection("players").insertOne({"name":"Tristan","password":"apzoeiruty"}, function(err, res) {
+      if (err) throw err;
+      console.log("1 document inserted");
+      db.close();
+  });
+  dbo.collection("players").insertMany([{"name":"John","password":"90"},{"name":"Tim","password":"80"}], function(err, res) {
+      if (err) throw err;
+      console.log("1 document inserted");
+      db.close();
+  });
+
+  // Remove a record :
+  // dbo.collection("players").remove({name:Tristan});
+
+  // Filter results : (pour tout afficher, mettre find({}))
+  var results = dbo.collection("players").find({name:"Tristan"});
+  results.forEach(row => {
+      console.log(row);
+  });
+});
 
 const app = express()
 app.use(bodyParser.urlencoded({ extended: false })) // for simple form posts

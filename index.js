@@ -9,17 +9,23 @@ MongoClient.connect(url,
     console.log("Database connected!");
     var dbo = db.db("newdb");
     // Insertion (one et many avec un array json)
-    // dbo.collection("students").insertOne({"name":"Abhishek","marks":100}, function(err, res) {
-    //     if (err) throw err;
-    //     console.log("1 document inserted");
-    //     db.close();
-    // });
-    // dbo.collection("students").insertMany([{"name":"John","marks":90},{"name":"Tim","marks":80}], function(err, res) {
-    //     if (err) throw err;
-    //     console.log("1 document inserted");
-    //     db.close();
-    // });
-    var results = dbo.collection("students").find({});
+
+    dbo.collection("students").insertOne({"name":"Abhishek","marks":100}, function(err, res) {
+        if (err) throw err;
+        console.log("1 document inserted");
+        db.close();
+    });
+    dbo.collection("students").insertMany([{"name":"John","marks":90},{"name":"Tim","marks":80}], function(err, res) {
+        if (err) throw err;
+        console.log("1 document inserted");
+        db.close();
+    });
+
+    // Remove a record :
+    // dbo.collection("students").remove({marks:90});
+
+    // Filter results : (pour tout afficher, mettre find({}))
+    var results = dbo.collection("students").find({marks:90});
     results.forEach(row => {
         console.log(row);
     });
