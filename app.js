@@ -18,19 +18,21 @@ MongoClient.connect(url,
   var dbo = db.db("gameDB");
   // Insertion (one et many avec un array json)
 
-  dbo.collection("players").insertOne({"name":"Tristan","password":"apzoeiruty"}, function(err, res) {
-      if (err) throw err;
-      console.log("1 document inserted");
-      db.close();
-  });
-  dbo.collection("players").insertMany([{"name":"John","password":"90"},{"name":"Tim","password":"80"}], function(err, res) {
-      if (err) throw err;
-      console.log("1 document inserted");
-      db.close();
-  });
+  // dbo.collection("players").insertOne({"name":"Tristan","password":"apzoeiruty"}, function(err, res) {
+  //     if (err) throw err;
+  //     console.log("1 document inserted");
+  //     db.close();
+  // });
+  // dbo.collection("players").insertMany([{"name":"John","password":"90"},{"name":"Tim","password":"80"}], function(err, res) {
+  //     if (err) throw err;
+  //     console.log("1 document inserted");
+  //     db.close();
+  // });
 
-  // Remove a record :
-  // dbo.collection("players").remove({name:Tristan});
+  // Remove a record : (supprime tous les doublons = toutes les occurences trouvées)
+  // dbo.collection("players").remove({name:"Tristan"});
+  // dbo.collection("players").remove({name:"John"});
+  // dbo.collection("players").remove({name:"Tim"});
 
   // Filter results : (pour tout afficher, mettre find({}))
   var results = dbo.collection("players").find({name:"Tristan"});

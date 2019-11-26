@@ -13,7 +13,8 @@ router.get('/start', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
-    
+  console.log("truc machin register")
+  res.sendFile(path.join(__dirname + '/connecte.html'))
 })
 
 router.post('/login', (req, res) => {
