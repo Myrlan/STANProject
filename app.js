@@ -45,16 +45,17 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false })) // for simple form posts
 app.use(bodyParser.json()) // for API requests
 
+/* Utilisation d'un secret
 sess = {
   secret: 'mydirtylittlesecret',
   name: 'sessId'
 }
-app.use(session(sess))
+app.use(session(sess))*/
 
 app.get('/', (req, res) => {
   res.send('ok');
-  req.session = sess
-  console.log(req.session)
+  /*req.session = sess
+  console.log(req.session)*/
 })
 
 app.use('/', game_routes_ref)
