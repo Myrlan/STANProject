@@ -25,8 +25,8 @@ router.use(session(sess))
 
 router.get('/debug', (req, res) => {
   console.log("===DEBUG===")
-  console.log(req.session)
-  res.send("Cookie : " + req.session.keys)
+  console.log(sess.keys)
+  res.send("Cookie : " + sess.keys)
 })
 
 router.get('/start', (req, res) => {
@@ -59,11 +59,14 @@ router.post('/register', (req, res) => {
         });
         // Connexion
         req.session.keys = [username,password]
-        res.sendFile(path.join(__dirname + '/connecte.html'))
+        sess.keys = [username,password]
+        res.render('main_menu', {success : true, message : "Vous êtes connecté, bienvenue " + username})
+        //res.sendFile(path.join(__dirname + '/connecte.html'))
       }else{
         // Le compte existe déjà
         console.log("Il y a déjà un utilisateur avec ce pseudo !")
-        res.sendFile(path.join(__dirname + '/Mal_inscrit.html'))
+        res.render('main_menu', {success : false, message : "Il y a déjà un utilisateur avec le pseudo " + username})
+        //res.sendFile(path.join(__dirname + '/Mal_inscrit.html'))
       }
       db.close();
     })
@@ -87,17 +90,21 @@ router.post('/login', (req, res) => {
         if(result.length==0){
           // Erreur username
           console.log("Erreur : l'utilisateur '" + username + "' n'existe pas !")
-          res.sendFile(path.join(__dirname + '/Mal_connecte.html'))
+          res.render('main_menu', {success : false, message : "L'utilisateur n'existe pas, veuillez réessayer"})
+          //res.sendFile(path.join(__dirname + '/Mal_connecte.html'))
         }else{
           // Le pseudo existe : vérification du mot de passe
           if(result[0].password==password){
             console.log("Mot de passe correct, connexion réussie !")
-            res.sendFile(path.join(__dirname + '/connecte.html'))
+            res.render('main_menu', {success : true, message : "Vous êtes connecté, bienvenue " + username})
+            //res.sendFile(path.join(__dirname + '/connecte.html'))
             req.session.keys = [username,password]
+            sess.keys = [username,password]
             //req.session.keys[1] = password
           }else{
             console.log("Mot de passe incorrect")
-            res.sendFile(path.join(__dirname + '/Mal_connecte.html'))
+            res.render('main_menu', {success : false, message : "Le nom d'utilisateur ou le mot de passe est incorrect, veuillez vous inscrire ou réessayer"})
+            //res.sendFile(path.join(__dirname + '/Mal_connecte.html'))
           }
         }
         db.close();

@@ -66,5 +66,5 @@ app.use('/', game_routes_ref)
 app.listen(3000, function () {
   console.log('Application démarrée sur le port 3000!')
   var opn = require('opn')
-  opn('http://localhost:3000/start')
+  opn('http://localhost:3000/start') // start par défaut (menu de connexion)
 })
