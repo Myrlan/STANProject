@@ -2,9 +2,30 @@ const express = require('express')
 const session = require('express-session')
 const game_routes_ref = require('./routes/game_routes.js')
 const bodyParser = require('body-parser') // pour parser les requêtes POST
+// var mongo = require('mongodb')
+// var MongoClient = require('mongodb').MongoClient
 
-// const mongoose = require('mongoose')
-// mongoose.connect('mongodb://localhost/mydb')
+// var url = 'mongodb://localhost:27017/newdb'
+
+// MongoClient.connect(url,
+// function (err, db) {
+// if (err) throw err
+// console.log('Database connected!')
+// var dbo = db.db('newdb')
+// Insertion (one et many avec un array json)
+// dbo.collection('students').insertOne({ name: 'Abhishek', marks: 100 }, function (err, res) {
+// if (err) throw err
+// console.log('1 document inserted')
+// var results = dbo.collection('students').find({})
+// results.forEach(row => {
+// console.log(row)
+// })
+// var results = dbo.collection('students').find({})
+// results.forEach(row => {
+// console.log(row)
+// })
+// db.close()
+// })
 
 const app = express()
 app.use(bodyParser.urlencoded({ extended: false })) // for simple form posts
@@ -17,7 +38,7 @@ sess = {
 app.use(session(sess))
 
 app.get('/', (req, res) => {
-  res.send('ok');
+  res.send('ok')
   req.session = sess
   console.log(req.session)
 })

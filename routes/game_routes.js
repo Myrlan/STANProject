@@ -50,7 +50,9 @@ router.post('/login', (req, res) => {
       console.log('Database connected!')
       var dbo = db.db('newdb')
       var collect = dbo.collection('students')
-
+      
+      dbo.collection('students').forEach((student))
+      
       // collect.forEach(element => students){
       // if (user.name === username){
       // if (user.marks === password){
