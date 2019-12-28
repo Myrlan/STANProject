@@ -1,5 +1,46 @@
 
+        function Slime(game,x,y){
+            Phaser.Sprite.call(this, game, x, y, 'slime');
+            this.anchor.set(0.5);
+            this.animations.add('up', [0, 1, 2,3,4,5,6,7,8], 8, true);
+            this.animations.add('down', [0, 1, 2,3,4,5,6,7,8], 8, true);
+            this.animations.add('left', [0, 1, 2,3,4,5,6,7,8], 8, true);
+            this.animations.add('right', [0, 1, 2,3,4,5,6,7,8], 8, true);
+            this.animations.add('static', [10,11,12], 8, true);
+            this.animations.play('static')
 
+            this.game.physics.enable(this);
+            this.body.velocity.x = Spider.SPEED;
+            this.body.velocity.y = Spider.SPEED;
+        }
+        Slime.prototype = Object.create(Phaser.Sprite.prototype);
+        Slime.prototype.constructor = Slime;
+        Slime.SPEED=20;
+        Slime.prototype.update = function () {
+            // check against walls and reverse direction if necessary
+            var rdm = getRandomInt(8)
+            if (rdm==0) {
+                this.body.velocity.x = -Slime.SPEED; // turn left
+            }
+            else if (rdm==1) {
+                th
+                is.body.velocity.x = Slime.SPEED; // turn right
+            }
+            else if (rdm==2) {
+                this.body.velocity.y = Slime.SPEED; // turn top
+            }
+            else if (rdm==3) {
+                this.body.velocity.y = -Slime.SPEED; // turn bottom
+            }
+            else {
+                this.body.velocity.x = 0; // turn off
+                this.body.velocity.y = 0;
+            }
+            if(this.body.touching.player){ 
+                
+
+            }
+        };
 var BootScene = new Phaser.Class({
 
     Extends: Phaser.Scene,
@@ -21,6 +62,9 @@ var BootScene = new Phaser.Class({
         
         // our two characters
         this.load.spritesheet('player', 'http://localhost:3000/assets/RPG_assets.png', { frameWidth: 16, frameHeight: 16 });
+        // Monsters
+        this.load.spritesheet('player', 'http://localhost:3000/assets/slime.png', { frameWidth: 16, frameHeight: 23 });
+
     },
 
     create: function ()
@@ -89,6 +133,9 @@ var WorldScene = new Phaser.Class({
             repeat: -1
         });        
 
+
+    
+
         // our player sprite created through the phycis system
         this.player = this.physics.add.sprite(50, 100, 'player', 6);
         
@@ -109,12 +156,14 @@ var WorldScene = new Phaser.Class({
         this.cursors = this.input.keyboard.createCursorKeys();
         
         // where the enemies will be
-        this.spawns = this.physics.add.group({ classType: Phaser.GameObjects.Zone });
+       // this.spawns = this.physics.add.group({ classType: Phaser.GameObjects.Zone });
+       this.spawns = this.physics.add.group({ classType: slime });
         for(var i = 0; i < 30; i++) {
             var x = Phaser.Math.RND.between(0, this.physics.world.bounds.width);
             var y = Phaser.Math.RND.between(0, this.physics.world.bounds.height);
             // parameters are x, y, width, height
-            this.spawns.create(x, y, 20, 20);            
+            let sprite = new Slime(this.game, x, y);
+            this.slime.add(sprite);            
         }        
         // add collider
         this.physics.add.overlap(this.player, this.spawns, this.onMeetEnemy, false, this);
@@ -125,7 +174,7 @@ var WorldScene = new Phaser.Class({
         zone.y = Phaser.Math.RND.between(0, this.physics.world.bounds.height);
         
         // shake the world
-        this.cameras.main.shake(300);
+        //this.cameras.main.shake(300);
         
         // start battle 
     },

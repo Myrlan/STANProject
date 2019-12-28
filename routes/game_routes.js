@@ -32,6 +32,10 @@ router.get('/debug', (req, res) => {
 router.get('/start', (req, res) => {
   res.sendFile(path.join(__dirname + '/main_menu.html'));
 })
+
+
+
+
 router.get('/game', (req, res) => {
   res.sendFile(path.join(__dirname + '/STAN.html'));
 })

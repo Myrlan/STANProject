@@ -2,8 +2,16 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Turn-Based RPG in Phaser 3</title>        
+        <title>Stan project</title>        
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+        <script>
+ 
+            $(function() {
+              $('#header').load("/navigation.html");
+              $('#footer').load("/footer.html");
+            });
+            
+            </script>
         <script src="http://localhost:3000/phaser.min.js"></script>     
         <script src="http://localhost:3000/game.js"></script>        
         <style>
@@ -13,10 +21,20 @@
             padding: 0;
             }
     </style>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+        <script>
+       
+        $(function() {
+          $('#header').load("/navigation.html");
+          $('#footer').load("/footer.html");
+        });
+        </script>
     </head>
     <body>
-        <!--<img src='http://localhost:3000/assets/RPG_assets.png'/> marche-->
+        <div id="header"></div>
         
-        <div id="content" style="display: block; width: 100%; text-align: center"></div><!--Marche pas-->
+        <div id="content" style="display: block; width: 100%; text-align: center;margin-top: 5%;"></div>
+        <div id="footer"></div>
     </body>
 </html>

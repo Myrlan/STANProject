@@ -3,31 +3,67 @@
 <html>
 
   <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Login/Register</title>
-  </head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
-  <div class="card bg-dark text-white">
-    <img src="http://localhost:3000/images/landscape-menu.jpg" alt="incroyable paysage représentatif du jeu" class="card-img" alt="magnifique paysage représentatif du jeu">
-    <div class="card-img-overlay">
-      <h5 class="card-title">Bienvenue à Stanland !</h5>
-      <p class="card-text">Rejoins l'aventure ou continue ta quête</p>
-      <p class="card-text">Connexion/Inscription</p>
-    
-      <body>
-        <form action="http://localhost:3000/login" method="POST">
-          <input name="username" type="text" placeholder="Identifiant" />
-          <input name="password" type="password" placeholder="Mot de passe" />
-          <input type="submit" value="Login" />
-        </form>
-        <form action="http://localhost:3000/register" method="POST">
-          <input name="username" type="text" placeholder="Identifiant" />
-          <input name="password" type="password" placeholder="Mot de passe" />
-          <input type="submit" value="Register" />
-        </form>
-      </body>
-
-    </div>
-  </div>
+  <script>
+ 
+  $(function() {
+    $('#header').load("/navigation.html");
+    $('#footer').load("/footer.html");
+  });
   
+  </script>
+
+
+  </head>
+  <body>
+    <div id="header"></div>
+      <div style='text-align: center;border-top: 5px;'>
+      <h5 class="card-title">Bienvenue sur Stanland !</h5>
+      <p class="card-text">Rejoins l'aventure ou continue ta quête</p>
+      </div>
+      <div id="split" style="width: 100%; margin-top: 5%;" >
+
+        <div id="div-left" style="float:left; margin-left: 5%;margin-right: 0%;background-color:floralwhite;text-align: center;border-radius: 5%;width: 40%;">
+          <label for="exampleInputEmail1">Connexion</label>
+        <form action="http://localhost:3000/login" method="POST">
+          <div class="form-group" >
+            <label for="exampleInputEmail1">User Name</label>
+            <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          
+          <button type="submit" class="btn btn-primary" value="Login">Submit</button>
+        </form>
+      </div>
+
+
+        <div id="div-right" style="float:right;margin-left: 5%;margin-right: 5%;background-color: floralwhite;text-align: center;border-radius: 5%;width: 40%;">
+         
+          <label for="exampleInputEmail1">Register</label>
+          <form action="http://localhost:3000/login" method="POST">
+            <div class="form-group" >
+              <label for="exampleInputEmail1">Type your User Name</label>
+              <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Type your Password</label>
+              <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Check your Password</label>
+              <input name="password1" type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <button type="submit" class="btn btn-primary" value="Login">Submit</button>
+          </form>
+        </div>
+      
+      </div>
+      <div id="footer"></div>
+      </body>
 </html>
