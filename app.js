@@ -47,7 +47,6 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: false })) // for simple form posts
 app.use(bodyParser.json()) // for API requests
 app.use(Express.static(__dirname+'/public')); // dossier partagé
-
 /* Utilisation d'un secret
 sess = {
   secret: 'mydirtylittlesecret',

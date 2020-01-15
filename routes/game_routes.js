@@ -33,6 +33,13 @@ router.get('/start', (req, res) => {
   res.sendFile(path.join(__dirname + '/main_menu.html'));
 })
 
+
+
+
+router.get('/game', (req, res) => {
+  res.sendFile(path.join(__dirname + '/STAN.html'));
+})
+
 router.post('/register', (req, res) => {
   console.log("truc machin register")
   const { username, password } = req.body
