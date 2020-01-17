@@ -277,8 +277,8 @@ class niveau1 extends Phaser.Scene {
       }
       console.log(time + '   ' + inc)
     } else {
-      if ((inc2 + 2000) <= time) {
-        // game.scene.resume("niveau1");
+      if ((inc2 + 1000) <= time) {
+        game.scene.stop('niveau1')
         game.scene.start('gameOver')
       }
     }
@@ -321,8 +321,9 @@ class gameOver extends Phaser.Scene {
 window.onload = function () {
   var config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    parent: 'content',
+    width: 1000,
+    height: 750,
     physics: {
       default: 'arcade',
       arcade: {
