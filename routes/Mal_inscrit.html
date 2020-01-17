@@ -4,7 +4,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script>  
       $(function() {
-        $('#header').load("/navigation.html");
+        $('#header').load("/navigationDec.html");
         $('#footer').load("/footer.html");
       });
     </script>
@@ -38,7 +38,7 @@
         <div id="div-right" style="float:right;margin-left: 5%;margin-right: 5%;background-color: floralwhite;text-align: center;border-radius: 5%;width: 40%;">
          
           <label for="exampleInputEmail1">Register</label>
-          <form action="http://localhost:3000/login" method="POST">
+          <form action="http://localhost:3000/register" method="POST">
             <div class="form-group" >
               <label for="exampleInputEmail1">Type your User Name</label>
               <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -52,7 +52,7 @@
               <label for="exampleInputPassword1">Check your Password</label>
               <input name="password1" type="password" class="form-control" id="exampleInputPassword1">
             </div>
-            <button type="submit" class="btn btn-primary" value="Login">Submit</button>
+            <button type="submit" class="btn btn-primary" value="register">Submit</button>
           </form>
         </div>
       

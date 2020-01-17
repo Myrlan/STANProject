@@ -57,8 +57,11 @@ router.post('/register', (req, res) => {
       if (err) throw err
       console.log('Database connected!')
       var dbo = db.db('gameDB')
+      var result
+      console.log(username + ' ' + password)
 
       dbo.collection('players').find({ name: username }).toArray(function (err, result) {
+        console.log(result)
         if (err) throw err
         // Test d'existence :
         if (result.length === 0) {

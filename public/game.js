@@ -58,8 +58,12 @@ class selectWorld extends Phaser.Scene {
     this.input.on('pointerup', function () {
       console.log('start')
 
-      game.scene.start('niveau1')
-      isAlive = true
+      if (isAlive === true) {
+        game.scene.start('niveau1')
+      } else {
+        game.scene.wake('niveau1')
+        isAlive = true
+      }
     }, start)
   }
 
@@ -278,7 +282,8 @@ class niveau1 extends Phaser.Scene {
       console.log(time + '   ' + inc)
     } else {
       if ((inc2 + 1000) <= time) {
-        game.scene.stop('niveau1')
+        game.scene.sleep('niveau1')
+
         game.scene.start('gameOver')
       }
     }
